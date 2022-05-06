@@ -1,4 +1,4 @@
-HEADER = 3
+HEADER_LINES = 3
 
 class Lizard():
   def __init__(self, data):
@@ -12,7 +12,7 @@ class Lizard():
     self.__set_totals(data)
 
   def __set_functions(self, data):
-    lines_to_analyze = data[HEADER:]
+    lines_to_analyze = data[HEADER_LINES:]
     for index, line in enumerate(lines_to_analyze):
       if "file analyzed." in line:
         self.files_count = int(line.split(" ")[0])
@@ -36,7 +36,7 @@ class Lizard():
       })
 
   def __set_averages(self, start_at, data):
-    lines_to_analyze = data[2*HEADER+start_at:]
+    lines_to_analyze = data[2*HEADER_LINES+start_at:]
     for line in lines_to_analyze:
       values = list(filter(None, line.split(" ")))
 
