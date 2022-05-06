@@ -20,10 +20,17 @@ class Lizard():
         return stopped_at
 
       values = list(filter(None, line.split(" ")))
+
+      function_name = values[5]
+      function_lines = ""
+      function_file = ""
+
       function_data = values[5].split('@')
-      function_name = function_data[0]
-      function_lines = function_data[1]
-      function_file = function_data[2];
+      if(len(function_data) == 3):
+        function_name = function_data[0]
+        function_lines = function_data[1]
+        function_file = function_data[2]
+
       self.functions.append({
         'name': function_name,
         'lines': function_lines,

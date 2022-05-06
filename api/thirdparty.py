@@ -6,6 +6,7 @@ import lizard
 import os
 import requests
 import shutil
+from serializers import Lizard
 
 api = Namespace("", description="Github integration")
 
@@ -23,7 +24,8 @@ class GithubIntegration(Resource):
 
             shutil.rmtree(f"__temp_code/", ignore_errors=True)
 
-            return result;
+            parsed_result = Lizard(result)
+            return parsed_result.__dict__;
 
         except Exception as error:
             return Response(str(error), status=500)

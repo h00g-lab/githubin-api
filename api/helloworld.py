@@ -11,5 +11,4 @@ class HelloWorld(Resource):
   def get(self):
     result = os.popen("lizard ./__sample_codes").read().splitlines()
     parsed_result = Lizard(result)
-    # return result
     return parsed_result.__dict__
