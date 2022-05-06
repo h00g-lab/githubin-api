@@ -8,9 +8,14 @@ services:
     ports:
       - "4000:80"
     environment:
+      - FLASK_APP=app.py
+      - FLASK_DEBUG=1
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
     depends_on:
       - db
+    command: flask run --host=0.0.0.0 --port=80  
+    volumes:
+      - .:/app
 
   db:
     container_name: db

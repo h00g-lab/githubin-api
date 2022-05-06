@@ -13,7 +13,7 @@ def initialize_app(app):
 
 def main():
   initialize_app(app)
-  app.run(debug=True)
+  app.run()
 
 if __name__ == '__main__':
   main()
