@@ -7,11 +7,10 @@ from api import api
 
 app = Flask(__name__)
 api.init_app(app)
-CORS(app)
 
 def initialize_app(app):
+  CORS(app)
   config_db(app)
-
 
 def main():
   initialize_app(app)
