@@ -6,4 +6,3 @@ lizard
 xmltodict
 requests
 gunicorn
-flask-cors
