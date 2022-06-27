@@ -6,10 +6,10 @@ from db import config_db
 from api import api
 
 app = Flask(__name__)
+CORS(app)
 api.init_app(app)
 
 def initialize_app(app):
-  CORS(app)
   config_db(app)
 
 def main():
