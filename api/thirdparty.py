@@ -11,6 +11,7 @@ from serializers import Lizard
 api = Namespace("", description="Github integration")
 
 @api.route('/<string:username>/<string:repository>')
+@cross_origin()
 class GithubIntegration(Resource):
     def get(self, username, repository):
 
