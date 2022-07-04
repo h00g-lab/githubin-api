@@ -7,3 +7,4 @@ xmltodict
 requests
 gunicorn
 flask-cors
+asyncio
