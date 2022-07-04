@@ -15,9 +15,7 @@ from serializers import Lizard
 api = Namespace("", description="Github integration")
 
 async def fetch(url):
-    async with aiohttp.ClientSession() as session, async_timeout.timeout(10):
-        async with session.get(url) as response:
-            return await response
+    return await request.get(url)
 
 
 @api.route('/<string:username>/<string:repository>')
@@ -26,9 +24,9 @@ class GithubIntegration(Resource):
 
         loop = asyncio.get_event_loop()
 
-        resp = loop.run_until_complete(asyncio.gather(
+        resp = loop.run_until_complete(
             fetch(f"https://api.github.com/repos/{username}/{repository}/zipball")
-        ))
+        )
         
         try:
             with ZipFile(BytesIO(resp.content)) as zf:
