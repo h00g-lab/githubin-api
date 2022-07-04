@@ -6,26 +6,15 @@ import lizard
 import os
 import requests
 import shutil
-import asyncio
-import aiohttp
-import async_timeout
 from serializers import Lizard
 
 api = Namespace("", description="Github integration")
-
-async def fetch(url):
-    return await requests.get(url)
-
 
 @api.route('/<string:username>/<string:repository>')
 class GithubIntegration(Resource):
     def get(self, username, repository):
 
-        loop = asyncio.get_event_loop()
-
-        resp = loop.run_until_complete(
-            fetch(f"https://api.github.com/repos/{username}/{repository}/zipball")
-        )
+        resp = requests.get(f"https://api.github.com/repos/{username}/{repository}/zipball")
         
         try:
             with ZipFile(BytesIO(resp.content)) as zf:
