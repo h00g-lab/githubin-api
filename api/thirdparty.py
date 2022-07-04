@@ -8,14 +8,13 @@ import requests
 import shutil
 import asyncio
 import aiohttp
-import aiohttp
 import async_timeout
 from serializers import Lizard
 
 api = Namespace("", description="Github integration")
 
 async def fetch(url):
-    return await request.get(url)
+    return await requests.get(url)
 
 
 @api.route('/<string:username>/<string:repository>')
