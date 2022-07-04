@@ -8,3 +8,5 @@ requests
 gunicorn
 flask-cors
 asyncio
+aiohttp
+async_timeout
