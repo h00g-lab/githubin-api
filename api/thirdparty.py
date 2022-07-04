@@ -21,6 +21,8 @@ async def fetch(url):
 class GithubIntegration(Resource):
     def get(self, username, repository):
 
+        loop = asyncio.get_event_loop()
+
         resp = loop.run_until_complete(asyncio.gather(
             fetch(f"https://api.github.com/repos/{username}/{repository}/zipball")
         ))
