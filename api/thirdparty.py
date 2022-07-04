@@ -7,6 +7,9 @@ import os
 import requests
 import shutil
 import asyncio
+import aiohttp
+import aiohttp
+import async_timeout
 from serializers import Lizard
 
 api = Namespace("", description="Github integration")
