@@ -17,7 +17,7 @@ api = Namespace("", description="Github integration")
 async def fetch(url):
     async with aiohttp.ClientSession() as session, async_timeout.timeout(10):
         async with session.get(url) as response:
-            return await response.text()
+            return await response
 
 
 @api.route('/<string:username>/<string:repository>')
