@@ -12,9 +12,9 @@ api = Namespace("", description="Github integration")
 
 @api.route('/<string:username>/<string:repository>')
 class GithubIntegration(Resource):
-    def get(self, username, repository):
+    async def get(self, username, repository):
 
-        resp = requests.get(f"https://api.github.com/repos/{username}/{repository}/zipball")
+        resp = await requests.get(f"https://api.github.com/repos/{username}/{repository}/zipball")
 
         try:
             with ZipFile(BytesIO(resp.content)) as zf:
